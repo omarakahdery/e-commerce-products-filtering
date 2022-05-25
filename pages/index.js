@@ -28,7 +28,7 @@ export default function Home() {
       </Head>
       <Formik
         initialValues={initialValues}
-        onSubmit={async (values) => {
+        onSubmit={(values) => {
           router.push({ pathname: "/", query: values }, undefined, {
             shallow: true,
           });
