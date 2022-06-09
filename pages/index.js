@@ -2,13 +2,6 @@ import Head from "next/head";
 import { Formik, Field, Form } from "formik";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-function getAsString(value) {
-  if (Array.isArray(value)) {
-    return String(value[0]);
-  }
-
-  return String(value);
-}
 export default function Home() {
   const { query } = useRouter();
   const router = useRouter();
@@ -16,9 +9,9 @@ export default function Home() {
   console.log(query);
 
   const [initialValues, setInitialValues] = useState({
-    categories: query.cat || "all categories",
-    color: query.color || "all color",
-    size: query.size || "all size",
+    categories: query.categories || "all-categories",
+    color: query.color || "all-color",
+    size: query.size || "all-size",
   });
   return (
     <div>
@@ -34,13 +27,15 @@ export default function Home() {
           });
         }}
       >
+        {/* {(props) => {
+          return ( */}
         <Form>
           <Field label="categories" as="select" name="categories">
-            <option value="all categories">get all</option>
+            <option value="all-categories">get all</option>
             <option value="electronics">electronics</option>
             <option value="jewelery">jewelery</option>
-            <option value="men's clothing">men's clothing</option>
-            <option value="women's clothing">women's clothing</option>
+            <option value="men-clothing">men's clothing</option>
+            <option value="women-clothing">women's clothing</option>
           </Field>
           <Field label="categories" as="select" name="color">
             <option value="all color">all color</option>
@@ -49,7 +44,7 @@ export default function Home() {
             <option value="white">White</option>
           </Field>
           <Field label="size" as="select" name="size">
-            <option value="all size">all size</option>
+            <option value="all-size">all size</option>
             <option value="s">S</option>
             <option value="m">M</option>
             <option value="l">L</option>
@@ -57,6 +52,8 @@ export default function Home() {
           </Field>
           <button type="submit">Submit</button>
         </Form>
+        );
+        {/* }} */}
       </Formik>
     </div>
   );
